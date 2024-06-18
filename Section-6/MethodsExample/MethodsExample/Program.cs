@@ -35,7 +35,7 @@ namespace MethodsExample
       product3.quantityInStock = 800;
 
       //Call methods
-      product1.CalculateTax(9.2);
+      product1.CalculateTax(percentage: 9.2);
       product2.CalculateTax();
       product3.CalculateTax(15.2);
 
