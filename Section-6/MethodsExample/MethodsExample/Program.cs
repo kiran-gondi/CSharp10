@@ -11,8 +11,12 @@ namespace MethodsExample
 
       //create objects
       product1 = new Product();
+      Product.TotalNoProducts++;
       product2 = new Product();
+      //Product.TotalNoProducts++;
+      Product.SetTotalNoOfProducts(Product.GetTotalNoOfProducts() + 1);
       product3 = new Product();
+      Product.TotalNoProducts++;
 
       //initalize fields
       //product1.productID = 1001;
@@ -61,9 +65,10 @@ namespace MethodsExample
       int totalQuantity = product1.quantityInStock + product2.quantityInStock + product3.quantityInStock;
 
       //display totals
-      System.Console.WriteLine("Total Quantity: " + totalQuantity);
-      System.Console.WriteLine("Total no. of products: " + Product.TotalNoProducts);  //Output: 3
-      System.Console.WriteLine("Category of products: " + Product.CategoryName);  //Output: Electronics
+      Console.WriteLine("Total Quantity: " + totalQuantity);
+      Console.WriteLine("Total no. of products: " + Product.TotalNoProducts);  //Output: 3
+      Console.WriteLine("Category of products: " + Product.CategoryName);  //Output: Electronics
+      Console.WriteLine("Total no. of products using static methods: " + Product.GetTotalNoOfProducts());
 
       Console.ReadKey();
     }
