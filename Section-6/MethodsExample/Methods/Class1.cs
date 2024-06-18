@@ -50,15 +50,27 @@
     }
 
     //Set method for ProductName
-    public void SetProductName(string productNameValue)
+    public void SetProductName(string productName)
     {
-      productName = productNameValue;
+      this.productName = productName;
     }
 
     //Get method for ProductName
     public string GetProductName()
     {
       return productName;
+    }
+
+    //static method: Set method of TotalNoOfProducts
+    public static void SetTotalNoOfProducts(int totalNoProducts)
+    {
+      TotalNoProducts = totalNoProducts;
+    }
+
+    //static method: Get method of TotalNoOfProducts
+    public static int GetTotalNoOfProducts()
+    {
+      return TotalNoProducts;
     }
   }
 }
