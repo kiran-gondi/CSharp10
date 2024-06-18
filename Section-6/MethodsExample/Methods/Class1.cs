@@ -21,7 +21,7 @@
     //method 
     /* cost<=20000 then tax = 10%
      * cost>20000 then tax = 12.5%*/
-    public void CalculateTax()
+    public void CalculateTax(double percentage = 8.5)
     {
       double t = 0;
 
@@ -31,7 +31,7 @@
       }
       else
       {
-        t = cost * 12.5 / 100;
+        t = cost * percentage / 100;
       }
 
       tax = t;

@@ -35,9 +35,9 @@ namespace MethodsExample
       product3.quantityInStock = 800;
 
       //Call methods
-      product1.CalculateTax();
+      product1.CalculateTax(9.2);
       product2.CalculateTax();
-      product3.CalculateTax();
+      product3.CalculateTax(15.2);
 
       //get values from fields
       Console.WriteLine("Product 1:");
@@ -66,10 +66,10 @@ namespace MethodsExample
       int totalQuantity = Product.GetTotalQuantity(product1, product2, product3);
 
       //display totals
-      Console.WriteLine("Total Quantity: " + totalQuantity);
+      Console.WriteLine("\nTotal Quantity: " + totalQuantity);
       Console.WriteLine("Total no. of products: " + Product.TotalNoProducts);  //Output: 3
       Console.WriteLine("Category of products: " + Product.CategoryName);  //Output: Electronics
-      Console.WriteLine("Total no. of products using static methods: " + Product.GetTotalNoOfProducts());
+      Console.WriteLine("\nTotal no. of products using static methods: " + Product.GetTotalNoOfProducts());
 
       Console.ReadKey();
     }
