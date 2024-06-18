@@ -72,5 +72,11 @@
     {
       return TotalNoProducts;
     }
+
+    //static method: Calculates Total Quantity
+    public static int GetTotalQuantity(Product product1, Product product2, Product product3)
+    {
+      return product1.quantityInStock + product2.quantityInStock + product3.quantityInStock;
+    }
   }
 }

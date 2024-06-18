@@ -62,7 +62,8 @@ namespace MethodsExample
       Console.WriteLine("Tax: " + product3.tax);
 
       //total Quantity
-      int totalQuantity = product1.quantityInStock + product2.quantityInStock + product3.quantityInStock;
+      //int totalQuantity = product1.quantityInStock + product2.quantityInStock + product3.quantityInStock;
+      int totalQuantity = Product.GetTotalQuantity(product1, product2, product3);
 
       //display totals
       Console.WriteLine("Total Quantity: " + totalQuantity);
