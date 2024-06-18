@@ -15,8 +15,10 @@ namespace MethodsExample
       product3 = new Product();
 
       //initalize fields
-      product1.productID = 1001;
-      product1.productName = "Mobile";
+      //product1.productID = 1001;
+      product1.SetProductID(1001);
+      //product1.productName = "Mobile";
+      product1.SetProductName("Mobile");
       product1.cost = 20000;
       product1.quantityInStock = 1200;
       product2.productID = 1003;
@@ -35,8 +37,8 @@ namespace MethodsExample
 
       //get values from fields
       Console.WriteLine("Product 1:");
-      Console.WriteLine("Product ID: " + product1.productID);
-      Console.WriteLine("Product Name: " + product1.productName);
+      Console.WriteLine("Product ID: " + product1.GetProductID());
+      Console.WriteLine("Product Name: " + product1.GetProductName());
       Console.WriteLine("Cost: " + product1.cost);
       Console.WriteLine("Quantity in Stock: " + product1.quantityInStock);
       Console.WriteLine("Tax: " + product1.tax);
@@ -54,6 +56,14 @@ namespace MethodsExample
       Console.WriteLine("Cost: " + product3.cost);
       Console.WriteLine("Quantity in Stock: " + product3.quantityInStock);
       Console.WriteLine("Tax: " + product3.tax);
+
+      //total Quantity
+      int totalQuantity = product1.quantityInStock + product2.quantityInStock + product3.quantityInStock;
+
+      //display totals
+      System.Console.WriteLine("Total Quantity: " + totalQuantity);
+      System.Console.WriteLine("Total no. of products: " + Product.TotalNoProducts);  //Output: 3
+      System.Console.WriteLine("Category of products: " + Product.CategoryName);  //Output: Electronics
 
       Console.ReadKey();
     }

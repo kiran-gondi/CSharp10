@@ -36,5 +36,29 @@
 
       tax = t;
     }
+
+    //Set method for ProductID
+    public void SetProductID(int productId)
+    {
+      productID = productId;
+    }
+
+    //Get method for ProductId
+    public int GetProductID() 
+    { 
+      return productID; 
+    }
+
+    //Set method for ProductName
+    public void SetProductName(string productNameValue)
+    {
+      productName = productNameValue;
+    }
+
+    //Get method for ProductName
+    public string GetProductName()
+    {
+      return productName;
+    }
   }
 }
