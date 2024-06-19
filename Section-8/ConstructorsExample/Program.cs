@@ -1,5 +1,4 @@
-﻿
-namespace ConstructorsExample
+﻿namespace ConstructorsExample
 {
   internal class Program
   {
@@ -10,17 +9,18 @@ namespace ConstructorsExample
       Employee emp2 = new Employee(102, "Allen", "QE");
       Employee emp3 = new Employee(103, "rom", "tester");
 
-      Console.WriteLine("First Employee:");
+      Console.WriteLine(Employee.CompanyName);
+      Console.WriteLine("\nFirst Employee:");
       Console.WriteLine(emp1.EmpId);
       Console.WriteLine(emp1.EmpName);
       Console.WriteLine(emp1.Job);
 
-      Console.WriteLine("Second Employee:");
+      Console.WriteLine("\nSecond Employee:");
       Console.WriteLine(emp2.EmpId);
       Console.WriteLine(emp2.EmpName);
       Console.WriteLine(emp2.Job);
 
-      Console.WriteLine("Third Employee:");
+      Console.WriteLine("\nThird Employee:");
       Console.WriteLine(emp3.EmpId);
       Console.WriteLine(emp3.EmpName);
       Console.WriteLine(emp3.Job);
