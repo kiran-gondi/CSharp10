@@ -17,6 +17,9 @@
 
       Employee emp3 = new Employee(103, "rom", "tester");
 
+      //Object Initializer
+      Employee emp4 = new Employee() { EmpName = "Rami", Job = "Dev" };
+
       Console.WriteLine(Employee.CompanyName);
       Console.WriteLine("\nFirst Employee:");
       Console.WriteLine(emp1.EmpId);
@@ -32,6 +35,11 @@
       Console.WriteLine(emp3.EmpId);
       Console.WriteLine(emp3.EmpName);
       Console.WriteLine(emp3.Job);
+
+      Console.WriteLine("\nFourth Employee:");
+      Console.WriteLine(emp4.EmpId);
+      Console.WriteLine(emp4.EmpName);
+      Console.WriteLine(emp4.Job);
 
       Console.ReadKey();
     }
