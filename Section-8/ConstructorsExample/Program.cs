@@ -5,8 +5,16 @@
     static void Main(string[] args)
     {
       
-      Employee emp1 = new Employee(101, "Scott", "manager");
-      Employee emp2 = new Employee(102, "Allen", "QE");
+      //Employee emp1 = new Employee(101, "Scott", "manager");
+      Employee emp1 = new Employee();
+      emp1.EmpId = 101;
+      emp1.EmpName = "Scott";
+      emp1.Job = "Manager";
+
+      //Employee emp2 = new Employee(102, "Allen", "QE");
+      Employee emp2 = new Employee(102, "Allen");
+      emp2.Job = "Director";
+
       Employee emp3 = new Employee(103, "rom", "tester");
 
       Console.WriteLine(Employee.CompanyName);
