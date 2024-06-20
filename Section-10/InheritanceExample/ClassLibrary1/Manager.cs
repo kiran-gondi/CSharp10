@@ -3,8 +3,14 @@
   //field
   private string _departmentName;
 
-  //property
-  public string DepartmentName { get { return _departmentName; } set { _departmentName = value; } }
+  //Constructor of Child Class
+  public Manager(int empId, string empName, string location, string departmentName):base(empId, empName, location)
+  {
+      _departmentName = departmentName;
+  }
+
+    //property
+    public string DepartmentName { get { return _departmentName; } set { _departmentName = value; } }
 
   //method
   public long GetTotalSalesOfTheYear()
