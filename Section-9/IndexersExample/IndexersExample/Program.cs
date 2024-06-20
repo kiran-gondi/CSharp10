@@ -8,6 +8,7 @@
 
       //call get accessor of indexer
       Console.WriteLine(c[0]);//Swift 
+      Console.WriteLine(c["first"]);//Swift 
 
       //call set accessor of index
       c[0] = "Nissan";
