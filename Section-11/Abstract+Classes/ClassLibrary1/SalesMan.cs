@@ -23,8 +23,13 @@ public class SalesMan : Employee
         }
     }
 
-    //method
-    public long GetSalesOfTheCurrentMonth()
+  public override string GetHealthInsuranceAmount()
+  {
+    return "Additional Health Insurance premium amount is: 2000";
+  }
+
+  //method
+  public long GetSalesOfTheCurrentMonth()
     {
         return 1000;
     }

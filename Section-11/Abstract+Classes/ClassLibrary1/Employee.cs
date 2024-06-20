@@ -14,11 +14,8 @@ public abstract class Employee
         this._location = location;
     }
 
-    //virtual method
-    public virtual string GetHealthInsuranceAmount()
-    {
-        return "Health Insurance amount is: " + 500;
-    }
+  //abstract method
+  public abstract string GetHealthInsuranceAmount();
 
     //properties
     public int EmpID

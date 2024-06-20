@@ -10,10 +10,9 @@ public class Manager: Employee
         _departmentName = departmentName;
     }
 
-    //method overriding of virtual methods
+    //method overriding the abstract methods
     public override string GetHealthInsuranceAmount()
     {
-        System.Console.WriteLine(base.GetHealthInsuranceAmount());
         return "Additional Health Insurance premium amount is: 1000";
     }
 
