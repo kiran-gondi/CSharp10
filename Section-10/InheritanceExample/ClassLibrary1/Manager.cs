@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Manager : Employee
+public sealed class Manager : Employee
 {
   //field
   private string _departmentName;
@@ -39,3 +39,9 @@ public class Manager : Employee
     return "Additional Health Insurance amount is: " + 750000;
   }
 }
+
+//Cannot inherit the sealed class
+//public class BranchManager : Manager
+//{
+
+//}
