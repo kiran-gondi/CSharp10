@@ -92,4 +92,7 @@
       double t = Salary - _tax;
       return t;
     }
+
+    //C# 3.0 - Automatic Properties
+    public string NativePlace { get; set; }
 }
