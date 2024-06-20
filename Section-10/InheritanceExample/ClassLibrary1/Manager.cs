@@ -1,4 +1,6 @@
-﻿public class Manager : Employee
+﻿using System;
+
+public class Manager : Employee
 {
   //field
   private string _departmentName;
@@ -25,8 +27,15 @@
   }
 
   //Method Hiding
-  public new string GetHealthInsuranceAmount()
+  //public new string GetHealthInsuranceAmount()
+  //{
+  //  return "Health Insurance amount is: " + 700000;
+  //}
+
+  //Method Overriding
+  public override string GetHealthInsuranceAmount()
   {
-    return "Health Insurance amount is: " + 700000;
+    Console.WriteLine(base.GetHealthInsuranceAmount());
+    return "Additional Health Insurance amount is: " + 750000;
   }
 }
