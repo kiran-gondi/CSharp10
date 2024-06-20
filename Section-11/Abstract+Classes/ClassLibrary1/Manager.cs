@@ -1,44 +1,91 @@
 ﻿//child class
-public class Manager: Employee
+using System;
+
+public class Manager : IPerson, IEmployee
 {
-    //field
-    private string _departmentName;
+  //field
+  private string _departmentName;
 
-    //constructor of child class
-    public Manager(int empID, string empName, string location, string departmentName) : base(empID, empName, location)
-    {
-        _departmentName = departmentName;
-    }
+  //constructor of child class
+  public Manager(int empID, string empName, string location, string departmentName)
+  {
+    this._empId = empID;
+    this._empName = empName;
+    this._location = location;
+    this._departmentName = departmentName;
+  }
 
-    //method overriding the abstract methods
-    public override string GetHealthInsuranceAmount()
-    {
-        return "Additional Health Insurance premium amount is: 1000";
-    }
+  //method overriding the abstract methods
+  //public override string GetHealthInsuranceAmount()
+  //{
+  //    return "Additional Health Insurance premium amount is: 1000";
+  //}
 
-    //property
-    public string DepartmentName
-    {
-        set
-        {
-            _departmentName = value;
-        }
-        get
-        {
-            return _departmentName;
-        }
-    }
+  //property
+  public string DepartmentName
+  {
+      set
+      {
+          _departmentName = value;
+      }
+      get
+      {
+          return _departmentName;
+      }
+  }
 
-    //method
-    public long GetTotalSalesOfTheYear()
-    {
-        return 10000;
-    }
+  //method
+  public long GetTotalSalesOfTheYear()
+  {
+      return 10000;
+  }
 
-    //method
-    public string GetFullDepartmentName()
-    {
-        return DepartmentName + " at " + base._location;
-    }
+  //method
+  public string GetFullDepartmentName()
+  {
+    return DepartmentName + " at " + _location;
+  }
+
+  private int _empId;
+  private string _empName;
+  private string _location;
+  private DateTime _dob;
+
+  public int EmpID { get { return _empId; } set { 
+      if(value >= 10000 && value <= 2000) { 
+        _empId = value;
+      }
+    } }
+  public string EmpName { get { return _empName; } set { _empName = value; } }
+  public string Location { get { return _location; } set { _location = value; } }
+
+  public DateTime DateOfBirth 
+  {
+    get { return _dob; }
+    set 
+    { 
+      if (value != DateTime.Now)
+      {
+        _dob = value;
+      }
+    } 
+  }
+
+  //method implementation
+  public string GetHealthInsuranceAmount()
+  {
+    return "Additional Health Insurance premium amount is: 1000";
+  }
+
+  int IPerson.GetAge()
+  {
+    return DateTime.Now.Year - _dob.Year; 
+  }
+
+  int IEmployee.GetAge()
+  {
+    return 20;
+  }
+
 }
 
