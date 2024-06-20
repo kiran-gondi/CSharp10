@@ -35,6 +35,7 @@
       System.Console.WriteLine(emp2.FirstName);
       System.Console.WriteLine(emp2.Job);
       System.Console.WriteLine(emp2.Salary);
+      System.Console.WriteLine("Native Place is " + emp2.NativePlace);
       System.Console.WriteLine();
 
       System.Console.WriteLine("Third employee:");
@@ -42,6 +43,7 @@
       System.Console.WriteLine(emp3.FirstName);
       System.Console.WriteLine(emp3.Job);
       System.Console.WriteLine(emp3.Salary);
+      System.Console.WriteLine("Native Place is " + emp3.NativePlace);
       System.Console.WriteLine();
 
       System.Console.ReadKey();
