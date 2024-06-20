@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
     static void Main()
     {
@@ -34,6 +36,12 @@
 
     emp = new SalesMan(103, "John", "Washington", "East");
     System.Console.WriteLine(emp.GetHealthInsuranceAmount()); //Manager.GetHealthInsuranceAmount
+    System.Console.WriteLine();
+
+    IPerson person;
+    person = new Manager(102, "Allen", "New York", "Accounting");
+    person.DateOfBirth = Convert.ToDateTime("1990-07-15");
+    Console.WriteLine("Age of the person:" + person.GetAge());
     System.Console.WriteLine();
 
     System.Console.ReadKey();
