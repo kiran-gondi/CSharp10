@@ -23,4 +23,10 @@
   {
     return DepartmentName + " at " + base.Location; 
   }
+
+  //Method Hiding
+  public new string GetHealthInsuranceAmount()
+  {
+    return "Health Insurance amount is: " + 700000;
+  }
 }
