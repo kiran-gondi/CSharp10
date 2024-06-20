@@ -1,7 +1,7 @@
 ﻿//child class
 using System;
 
-public class Manager : IEmployee, IPerson
+public class Manager : IEmployee
 {
   //field
   private string _departmentName;
@@ -79,11 +79,7 @@ public class Manager : IEmployee, IPerson
 
   public int GetAge()
   {
-    int resultAge;
-    //if (_dob != null) { 
-      resultAge = DateTime.Now.Year - _dob.Year;
-    //}
-    return resultAge;
+    return DateTime.Now.Year - _dob.Year; ;
   }
 }
 

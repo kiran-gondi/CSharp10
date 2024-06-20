@@ -1,5 +1,5 @@
-﻿//interface
-public interface IEmployee
+﻿//child interface
+public interface IEmployee : IPerson
 {
     
   //abstract method

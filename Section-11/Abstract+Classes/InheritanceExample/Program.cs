@@ -32,6 +32,8 @@ class Program
 
     emp = new Manager(102, "Allen", "New York", "Accounting");
     System.Console.WriteLine(emp.GetHealthInsuranceAmount()); //Manager.GetHealthInsuranceAmount
+    emp.DateOfBirth = Convert.ToDateTime("2021-07-15");
+    Console.WriteLine("Age of the person:" + emp.GetAge());
     System.Console.WriteLine();
 
     emp = new SalesMan(103, "John", "Washington", "East");
@@ -40,7 +42,7 @@ class Program
 
     IPerson person;
     person = new Manager(102, "Allen", "New York", "Accounting");
-    person.DateOfBirth = Convert.ToDateTime("1990-07-15");
+    person.DateOfBirth = Convert.ToDateTime("2020-07-15");
     Console.WriteLine("Age of the person:" + person.GetAge());
     System.Console.WriteLine();
 

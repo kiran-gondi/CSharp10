@@ -1,4 +1,6 @@
 ﻿//child class
+using System;
+
 public class SalesMan : IEmployee
 {
   //field
@@ -40,6 +42,7 @@ public long GetSalesOfTheCurrentMonth()
   private int _empId;
   private string _empName;
   private string _location;
+  private DateTime _dob;
 
   public int EmpID { get { return _empId; } 
     
@@ -53,10 +56,27 @@ public long GetSalesOfTheCurrentMonth()
   public string EmpName { get { return _empName; } set { _empName = value; } }
   public string Location { get { return _location; } set { _location = value; } }
 
+  public DateTime DateOfBirth
+  {
+    get { return _dob; }
+    set
+    {
+      if (value != DateTime.Now)
+      {
+        _dob = value;
+      }
+    }
+  }
+
   //method implementation
   public string GetHealthInsuranceAmount()
   {
     return "Additional Health Insurance premium amount is: 2000"; ;
+  }
+
+  public int GetAge()
+  {
+    return DateTime.Now.Year - _dob.Year; ;
   }
 }
 
