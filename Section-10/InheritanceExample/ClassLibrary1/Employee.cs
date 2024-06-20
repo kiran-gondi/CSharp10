@@ -14,6 +14,11 @@ public class Employee
       this._location = location;
     }
 
+    //method
+    public string GetHealthInsuranceAmount()
+    {
+      return "Health Insurance amoutn is: " + 500000;
+    }
     //properties
     public int EmpId { get { return _empId; } set { _empId = value; } }
 

@@ -20,6 +20,7 @@
     Console.WriteLine(mgr.DepartmentName);
     Console.WriteLine("Mgr to GetTotalSalesOfTheYear:" + mgr.GetTotalSalesOfTheYear());
     Console.WriteLine("Get full department Name with Location: " + mgr.GetFullDepartmentName());
+    Console.WriteLine("Method HIDING concept: " + mgr.GetHealthInsuranceAmount());
 
     //Create Object of Salesman
     SalesMan salesMan = new SalesMan(103, "Bill3", "Bangalore3", "UK");
