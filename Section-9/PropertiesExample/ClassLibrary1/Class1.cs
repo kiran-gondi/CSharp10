@@ -93,6 +93,9 @@
       return t;
     }
 
-    //C# 3.0 - Automatic Properties
-    public string NativePlace { get; set; }
+  //C# 3.0 - Automatic Properties
+  //public string NativePlace { get; set; }
+
+  //C# 6.0 Auto-Implemented Property Initializers
+  public string NativePlace { get; set; } = "New York";
 }
