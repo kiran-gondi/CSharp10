@@ -12,4 +12,9 @@
     return 100000;
   }
 
+  //method 
+  public string GetFullDepartmentName()
+  {
+    return DepartmentName + " at " + base.Location; 
+  }
 }

@@ -19,6 +19,7 @@
     PrintBaseClassProperties(mgr);
     Console.WriteLine(mgr.DepartmentName);
     Console.WriteLine("Mgr to GetTotalSalesOfTheYear:" + mgr.GetTotalSalesOfTheYear());
+    Console.WriteLine("Get full department Name with Location: " + mgr.GetFullDepartmentName());
 
     //Create Object of Salesman
     SalesMan salesMan = new SalesMan();
