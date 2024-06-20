@@ -1,7 +1,7 @@
 ﻿//child class
 using System;
 
-public class Manager : IEmployee
+public class Manager : IPerson, IEmployee
 {
   //field
   private string _departmentName;
@@ -74,12 +74,18 @@ public class Manager : IEmployee
   //method implementation
   public string GetHealthInsuranceAmount()
   {
-    return "Additional Health Insurance premium amount is: 1000"; ;
+    return "Additional Health Insurance premium amount is: 1000";
   }
 
-  public int GetAge()
+  int IPerson.GetAge()
   {
-    return DateTime.Now.Year - _dob.Year; ;
+    return DateTime.Now.Year - _dob.Year; 
   }
+
+  int IEmployee.GetAge()
+  {
+    return 20;
+  }
+
 }
 

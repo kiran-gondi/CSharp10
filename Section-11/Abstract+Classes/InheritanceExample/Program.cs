@@ -32,7 +32,7 @@ class Program
 
     emp = new Manager(102, "Allen", "New York", "Accounting");
     System.Console.WriteLine(emp.GetHealthInsuranceAmount()); //Manager.GetHealthInsuranceAmount
-    emp.DateOfBirth = Convert.ToDateTime("2021-07-15");
+    //emp.DateOfBirth = Convert.ToDateTime("2021-07-15");
     Console.WriteLine("Age of the person:" + emp.GetAge());
     System.Console.WriteLine();
 

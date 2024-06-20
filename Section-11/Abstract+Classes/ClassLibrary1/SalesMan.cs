@@ -1,7 +1,7 @@
 ﻿//child class
 using System;
 
-public class SalesMan : IEmployee
+public class SalesMan : IPerson, IEmployee
 {
   //field
   private string _region;

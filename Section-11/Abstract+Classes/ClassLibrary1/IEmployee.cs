@@ -1,5 +1,5 @@
 ﻿//child interface
-public interface IEmployee : IPerson
+public interface IEmployee 
 {
     
   //abstract method
@@ -20,4 +20,6 @@ public interface IEmployee : IPerson
     {
     get; set;
   }
+
+  int GetAge();
 }
