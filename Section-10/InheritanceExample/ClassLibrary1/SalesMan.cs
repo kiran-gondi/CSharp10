@@ -3,8 +3,14 @@
   //field 
   private string _region;
 
-  //property
-  public string Region
+  //Constructor of Child Class
+  public SalesMan(int empId, string empName, string location, string region):base(empId, empName, location)
+  {
+      this._region = region;
+  }
+
+    //property
+    public string Region
   {
     get { return _region; }
     set { _region = value; }
