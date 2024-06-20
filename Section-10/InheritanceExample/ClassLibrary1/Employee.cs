@@ -14,13 +14,20 @@ public class Employee
       this._location = location;
     }
 
-    //method
-    public string GetHealthInsuranceAmount()
-    {
-      return "Health Insurance amoutn is: " + 500000;
-    }
-    //properties
-    public int EmpId { get { return _empId; } set { _empId = value; } }
+  //method
+  //public string GetHealthInsuranceAmount()
+  //{
+  //  return "Health Insurance amoutn is: " + 500000;
+  //}
+
+  //Method Overriding
+  public virtual string GetHealthInsuranceAmount()
+  {
+    return "Health Insurance amount is: " + 500000;
+  }
+
+  //properties
+  public int EmpId { get { return _empId; } set { _empId = value; } }
 
   public string EmpName { get { return _empName; } set { _empName = value; } }
 
