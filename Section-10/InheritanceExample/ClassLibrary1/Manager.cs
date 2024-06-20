@@ -1,6 +1,6 @@
 ﻿using System;
 
-public sealed class Manager : Employee
+public class Manager : Employee
 {
   //field
   private string _departmentName;
@@ -33,7 +33,7 @@ public sealed class Manager : Employee
   //}
 
   //Method Overriding
-  public override string GetHealthInsuranceAmount()
+  public sealed override string GetHealthInsuranceAmount()
   {
     Console.WriteLine(base.GetHealthInsuranceAmount());
     return "Additional Health Insurance amount is: " + 750000;
@@ -45,3 +45,19 @@ public sealed class Manager : Employee
 //{
 
 //}
+
+//Cannot inherit the sealed class
+public class BranchManager : Manager
+{
+  //constructor of child class
+  public BranchManager(int empId, string empName, string location, string departmentName) :
+    base(empId, empName, location, departmentName)
+  {
+  }
+
+  //method overriding for virtual methods
+  public override string GetHealthInsuranceAmount()
+  {
+
+  }
+}
