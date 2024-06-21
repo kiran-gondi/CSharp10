@@ -1,17 +1,10 @@
 ﻿namespace HR
 {
-    //interface that represents an employee in the organization
-    public interface IEmployee
-    {
-    }
 
+   namespace Mgr
+  {
     //interface that represents a manager, which inherits from IEmployee
     public interface IManager : IEmployee
-    {
-    }
-
-    //interface that represents an executive, which inherits from IEmployee
-    public interface IExecutive : IEmployee
     {
     }
 
@@ -24,6 +17,23 @@
     public class AsstManager : IManager
     {
     }
+
+  }
+    //interface that represents an employee in the organization
+    public interface IEmployee
+    {
+    }
+
+   
+
+    //interface that represents an executive, which inherits from IEmployee
+    public interface IExecutive : IEmployee
+    {
+    }
+
+    
+
+    
 
     //class that represents an executive, which inherits from IExecutive
     public class Executive : IExecutive

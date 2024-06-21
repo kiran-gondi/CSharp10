@@ -4,7 +4,7 @@
   {
     static void Main(string[] args)
     {
-      HR.IManager mgr = new HR.Manager();
+      HR.Mgr.IManager mgr = new HR.Mgr.Manager();
 
       FrontOffice.FrontOfficeExecutive frontOfficeExecutive = new FrontOffice.FrontOfficeExecutive();
       FrontOffice.CustomerEnquiry customerEnquiry = new FrontOffice.CustomerEnquiry();
