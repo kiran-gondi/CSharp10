@@ -9,4 +9,11 @@
     get { return _cost; }
     set { _cost = value; }
   }
+
+  //public method to call partial method
+  public void CallGetTax()
+  {
+    GetTax();
+  }
+
 }

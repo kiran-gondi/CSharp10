@@ -5,4 +5,7 @@
 
   //public property
   public int ProductId { get { return _productId; } set { _productId = value; } }
+
+  //declaration of partial method
+  partial void GetTax();
 }

@@ -1,9 +1,9 @@
 ﻿public partial class Product
 {
   // public method
-  public double GetTax()
+  partial void GetTax()
   {
     double tax = Cost * 10 / 100;
-    return tax;
+    Console.WriteLine("Calculated tax from File3 is:-> " + tax); 
   }
 }
