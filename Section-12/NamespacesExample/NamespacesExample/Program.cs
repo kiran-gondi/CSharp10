@@ -1,5 +1,6 @@
 ﻿using m = HR.Mgr;
 using FrontOffice;
+using static System.Console;
 
 namespace NamespacesExample
 {
@@ -7,12 +8,13 @@ namespace NamespacesExample
   {
     static void Main(string[] args)
     {
+      WriteLine("Manager Class");
       m.IManager mgr = new m.Manager();
 
       FrontOfficeExecutive frontOfficeExecutive = new FrontOfficeExecutive();
       CustomerEnquiry customerEnquiry = new CustomerEnquiry();
 
-      Console.ReadKey();
+      ReadKey();
     }
   }
 }
