@@ -1,4 +1,4 @@
-﻿using HR.Mgr;
+﻿using m = HR.Mgr;
 using FrontOffice;
 
 namespace NamespacesExample
@@ -7,7 +7,7 @@ namespace NamespacesExample
   {
     static void Main(string[] args)
     {
-      IManager mgr = new Manager();
+      m.IManager mgr = new m.Manager();
 
       FrontOfficeExecutive frontOfficeExecutive = new FrontOfficeExecutive();
       CustomerEnquiry customerEnquiry = new CustomerEnquiry();
