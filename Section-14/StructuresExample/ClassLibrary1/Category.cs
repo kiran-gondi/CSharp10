@@ -4,8 +4,15 @@
   private int _categoryId;
   private string _categoryName;
 
-  //public fields
-  public int CategoryId
+    //parameterized Constructor
+    public Category(int categoryId, string categoryName)
+    {
+        _categoryId = categoryId;
+        _categoryName = categoryName; 
+    }
+
+    //public fields
+    public int CategoryId
   {
     get { return _categoryId; }
     set 
