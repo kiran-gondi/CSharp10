@@ -1,13 +1,16 @@
-﻿namespace NamespacesExample
+﻿using HR.Mgr;
+using FrontOffice;
+
+namespace NamespacesExample
 {
   internal class Program
   {
     static void Main(string[] args)
     {
-      HR.Mgr.IManager mgr = new HR.Mgr.Manager();
+      IManager mgr = new Manager();
 
-      FrontOffice.FrontOfficeExecutive frontOfficeExecutive = new FrontOffice.FrontOfficeExecutive();
-      FrontOffice.CustomerEnquiry customerEnquiry = new FrontOffice.CustomerEnquiry();
+      FrontOfficeExecutive frontOfficeExecutive = new FrontOfficeExecutive();
+      CustomerEnquiry customerEnquiry = new CustomerEnquiry();
 
       Console.ReadKey();
     }
