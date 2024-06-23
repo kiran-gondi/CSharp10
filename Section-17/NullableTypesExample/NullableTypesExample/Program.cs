@@ -17,13 +17,10 @@
       Person p2 = new Person() { NoOfChildren = null };
       Person p3 = null; //Valid for classes
 
-      Console.WriteLine(p1.NoOfChildren);
+      //Console.WriteLine(p1.NoOfChildren);
       //if (p2.NoOfChildren != null)
-      if (p2.NoOfChildren.HasValue)
-      {
-        int x = p2.NoOfChildren.Value;
-        Console.WriteLine(x);
-      }
+      //Console.WriteLine(p2.NoOfChildren.HasValue ? p2.NoOfChildren.Value : 0);
+      Console.WriteLine(p2.NoOfChildren ?? 0);
 
       Console.ReadKey();
     }
