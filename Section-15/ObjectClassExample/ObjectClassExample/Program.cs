@@ -2,21 +2,17 @@
 {
   public static void Main()
   {
-    try
-    {
-      Person p;
-      System.Object abc = new Person();
-      p = new Supplier();
+    //Create an object of Person class
+    System.Object personObject = new Person() { PersonName = "rahul", Email = "rahul@ddlj.com" };
 
-      int a = 10;
-      System.Object inta = a;
-    }
-    catch (Exception)
-    {
+    //access methods
+    Console.WriteLine(personObject.Equals(new Person() { PersonName = "rahul", Email = "rahul@ddlj.com" }));
+    Console.WriteLine(personObject.GetHashCode());
+    Console.WriteLine(personObject.ToString());
+    Console.WriteLine(personObject.GetType().ToString()); //We can't overide the GetType().ToString() from the class.
 
-      throw;
-    }
-    
+    //Supplier supplier = new Supplier() { PersonName = "rob", Email = "rob@wills.com" };
+    //Console.WriteLine("\n" + supplier.ToString()); 
 
     Console.ReadKey();
   }
