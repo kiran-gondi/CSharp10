@@ -8,13 +8,19 @@ namespace EventsExample
     static void Main(string[] args)
     {
       //create object of Subscriber class
-      Subscriber subscriber = new Subscriber();
+      //Subscriber subscriber = new Subscriber();
 
       //create object of Publisher class
       Publisher publisher = new Publisher();
 
       //handle the event(or)subscribe to event
-      publisher.myEvent += subscriber.Add;
+      //publisher.myEvent += subscriber.Add;
+
+      //Anonymous Method
+      publisher.myEvent += delegate(int a, int b){
+        int c = a + b;
+        Console.WriteLine(c);
+      };
 
       //invoke the event
       publisher.RaiseEvent(10, 20);
