@@ -23,11 +23,14 @@ namespace EventsExample
       //};
 
       //Lambda Expression
-      publisher.myEvent += (a, b) =>
-      {
-        int c = a + b;
-        Console.WriteLine(c);
-      };
+      //publisher.myEvent += (a, b) =>
+      //{
+      //  int c = a + b;
+      //  Console.WriteLine(c);
+      //};
+
+      //Inline Lambda Expression
+      publisher.myEvent += (a, b) => Console.WriteLine(a+b);
 
       //invoke the event
       publisher.RaiseEvent(10, 20);
