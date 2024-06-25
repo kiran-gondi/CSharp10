@@ -18,6 +18,8 @@ namespace EventsExample
 
       //invoke the event
       publisher.RaiseEvent(10, 20);
+      publisher.RaiseEvent(11, 22);
+      publisher.RaiseEvent(2, 4);
 
       Console.ReadKey();
     }
