@@ -17,7 +17,14 @@ namespace EventsExample
       //publisher.myEvent += subscriber.Add;
 
       //Anonymous Method
-      publisher.myEvent += delegate(int a, int b){
+      //publisher.myEvent += delegate(int a, int b){
+      //  int c = a + b;
+      //  Console.WriteLine(c);
+      //};
+
+      //Lambda Expression
+      publisher.myEvent += (a, b) =>
+      {
         int c = a + b;
         Console.WriteLine(c);
       };
