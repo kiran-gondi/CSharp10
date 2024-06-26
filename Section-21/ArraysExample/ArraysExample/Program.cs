@@ -23,13 +23,21 @@ namespace ArraysExample
       //Console.WriteLine(b[3]);
       //Console.WriteLine(b[4]);
       //Console.WriteLine();
-      
+
       //display the values of elements
-      for (int i = 0; i < b.Length; i++) 
-      { 
+      //for (int i = 0; i < b.Length; i++) 
+      //{ 
+      //  Console.WriteLine(b[i]);
+      //}
+
+      //foreach (string i in b) {
+      //  Console.WriteLine(i);
+      //}
+
+      //reverse
+      for (int i = b.Length - 1; i >= 0; i--) {
         Console.WriteLine(b[i]);
       }
-
 
       Console.ReadKey();
     }
