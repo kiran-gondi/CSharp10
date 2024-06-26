@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary1
+﻿using System;
+
+namespace ClassLibrary1
 {
   //delegate type
   public delegate void MyDelegateType(int a,  int b);
@@ -24,7 +26,10 @@
     //}
 
     //Auto-Implemented Events
-    public event MyDelegateType myEvent;
+    //public event MyDelegateType myEvent;
+
+    //Func
+    public event Func<int, int, int> myEvent;
 
     //Needed for event with delegate
     //public void RaiseEvent(int a, int b)
