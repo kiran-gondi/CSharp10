@@ -34,16 +34,27 @@ namespace EventsExample
       //publisher.myEvent += (a, b) => Console.WriteLine(a+b);
 
       //Action
-      publisher.myEvent += (a, b) =>
+      //publisher.myEvent += (a, b) =>
+      //{
+      //  int c = a + b;
+      //  Console.WriteLine(c);
+      //};
+
+      //Predicate
+      publisher.myEvent += (a) =>
       {
-        int c = a + b;
-        Console.WriteLine(c);
+        return a >= 0;
       };
 
       //invoke the event
-      publisher.RaiseEvent(10, 20);
-      publisher.RaiseEvent(11, 22);
-      publisher.RaiseEvent(2, 4);
+      //publisher.RaiseEvent(10, 20);
+      //publisher.RaiseEvent(11, 22);
+      //publisher.RaiseEvent(2, 4);
+
+      //invoke the event for predicate
+      Console.WriteLine(publisher.RaiseEvent(10));
+      Console.WriteLine(publisher.RaiseEvent(-11));
+      Console.WriteLine(publisher.RaiseEvent(2));
 
       Console.ReadKey();
     }

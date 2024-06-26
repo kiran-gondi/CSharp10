@@ -32,7 +32,10 @@ namespace ClassLibrary1
     //public event Func<int, int, int> myEvent;
 
     //Action
-    public event Action<int, int> myEvent;
+    //public event Action<int, int> myEvent;
+
+    //Predicate
+    public event Predicate<int> myEvent;
 
     //Needed for event with delegate
     //public void RaiseEvent(int a, int b)
@@ -45,12 +48,17 @@ namespace ClassLibrary1
     //}
 
     //Auto-Implemented Events
-    public void RaiseEvent(int a, int b)
+    public bool RaiseEvent(int a)
     {
       //step2: raise event
       if (this.myEvent != null)
       {
-        this.myEvent(a, b);
+        bool result = this.myEvent(a);
+        return result;
+      }
+      else
+      {
+        return false;
       }
     }
 
