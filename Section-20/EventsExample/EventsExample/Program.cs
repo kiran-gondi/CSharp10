@@ -7,6 +7,14 @@ namespace EventsExample
   {
     static void Main(string[] args)
     {
+      Program p = new Program();
+      p.DoWork();
+
+      Console.ReadKey();
+    }
+
+    public void DoWork()
+    {
       //create object of Subscriber class
       //Subscriber subscriber = new Subscriber();
 
@@ -41,9 +49,16 @@ namespace EventsExample
       //};
 
       //Predicate
-      publisher.myEvent += (a) =>
+      //publisher.myEvent += (a) =>
+      //{
+      //  return a >= 0;
+      //};
+
+      //EventHandler
+      publisher.myEvent += (sender, e) =>
       {
-        return a >= 0;
+        int c = e.a + e.b;
+        Console.WriteLine(c);
       };
 
       //invoke the event
@@ -52,11 +67,14 @@ namespace EventsExample
       //publisher.RaiseEvent(2, 4);
 
       //invoke the event for predicate
-      Console.WriteLine(publisher.RaiseEvent(10));
-      Console.WriteLine(publisher.RaiseEvent(-11));
-      Console.WriteLine(publisher.RaiseEvent(2));
+      //Console.WriteLine(publisher.RaiseEvent(10));
+      //Console.WriteLine(publisher.RaiseEvent(-11));
+      //Console.WriteLine(publisher.RaiseEvent(2));
 
-      Console.ReadKey();
+      //EventHandler
+      publisher.RaiseEvent(this, 10, 20);
+      publisher.RaiseEvent(this, 11, 22);
+      publisher.RaiseEvent(this, 2, 4);
     }
   }
 }
