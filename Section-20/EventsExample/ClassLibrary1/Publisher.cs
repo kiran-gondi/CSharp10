@@ -29,7 +29,10 @@ namespace ClassLibrary1
     //public event MyDelegateType myEvent;
 
     //Func
-    public event Func<int, int, int> myEvent;
+    //public event Func<int, int, int> myEvent;
+
+    //Action
+    public event Action<int, int> myEvent;
 
     //Needed for event with delegate
     //public void RaiseEvent(int a, int b)
