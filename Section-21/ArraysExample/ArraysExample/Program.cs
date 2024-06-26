@@ -11,17 +11,25 @@ namespace ArraysExample
       string[] b = new string[5] { "demo1", "demo2", "demo3", "demo4", "demo5" };
 
       //display the values of elements
-      Console.WriteLine(a[0]);
-      Console.WriteLine(a[1]);
-      Console.WriteLine(a[2]);
-      Console.WriteLine(a[3]);
-      Console.WriteLine(a[4]);
-      Console.WriteLine();
-      Console.WriteLine(b[0]);
-      Console.WriteLine(b[1]);
-      Console.WriteLine(b[2]);
-      Console.WriteLine(b[3]);
-      Console.WriteLine(b[4]);
+      //Console.WriteLine(a[0]);
+      //Console.WriteLine(a[1]);
+      //Console.WriteLine(a[2]);
+      //Console.WriteLine(a[3]);
+      //Console.WriteLine(a[4]);
+      //Console.WriteLine();
+      //Console.WriteLine(b[0]);
+      //Console.WriteLine(b[1]);
+      //Console.WriteLine(b[2]);
+      //Console.WriteLine(b[3]);
+      //Console.WriteLine(b[4]);
+      //Console.WriteLine();
+      
+      //display the values of elements
+      for (int i = 0; i < b.Length; i++) 
+      { 
+        Console.WriteLine(b[i]);
+      }
+
 
       Console.ReadKey();
     }
