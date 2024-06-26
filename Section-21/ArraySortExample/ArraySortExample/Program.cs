@@ -10,6 +10,8 @@ namespace ArraySortExample
 
       Array.Sort(a);
 
+      Array.Reverse(a);
+
       foreach (int i in a)
       {
         Console.WriteLine(i);
