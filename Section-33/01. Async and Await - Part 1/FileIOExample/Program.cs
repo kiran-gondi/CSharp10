@@ -3,25 +3,24 @@ using System.Threading.Tasks;
 
 class FileWriter
 {
-  public Task WriteFile(string fileName, string data)
+  public async Task WriteFile(string fileName, string data)
   {
     StreamWriter writer = new StreamWriter(fileName);
     Task writerTask = writer.WriteAsync(data);
+    await writerTask;
     writer.Close();
-
-    return writerTask;
   }
 }
 
 class FileReader
 {
-  public Task<string> ReadFile(string fileName)
+  public async Task<string> ReadFile(string fileName)
   {
     StreamReader reader = new StreamReader(fileName);
     Task<string> readerTask = reader.ReadToEndAsync();
     reader.Close();
 
-    return readerTask;
+    return await readerTask;
   }
 }
 
