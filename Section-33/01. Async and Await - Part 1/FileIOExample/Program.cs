@@ -15,6 +15,9 @@ class FileReader
 {
   public async Task<string> ReadFile(string fileName)
   {
+    //Exception Handling
+    //throw new NotSupportedException();
+
     using (StreamReader reader = new StreamReader(fileName)) { 
       string content = await reader.ReadToEndAsync();
       return content;
@@ -36,12 +39,19 @@ class Program
                                                                                        //(but without blocking the current thread) 
     Console.WriteLine("File written.");
 
-    //Read data from the file asynchronously
-    string content = await fileReader.ReadFile(fileName);//Block the current task
-                                                         //(but without blocking the current thread) 
-    Console.WriteLine("File read.");
-    Console.WriteLine($"\nFile content: {content}");
-
+    try
+    {
+      //Read data from the file asynchronously
+      string content = await fileReader.ReadFile(fileName);//Block the current task
+                                                           //(but without blocking the current thread) 
+      Console.WriteLine("File read.");
+      Console.WriteLine($"\nFile content: {content}");
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine(ex.Message);
+    }
+    
     Console.ReadKey();
   }
 }
