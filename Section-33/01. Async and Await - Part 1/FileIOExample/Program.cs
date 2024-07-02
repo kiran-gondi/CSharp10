@@ -5,10 +5,9 @@ class FileWriter
 {
   public async Task WriteFile(string fileName, string data)
   {
-    StreamWriter writer = new StreamWriter(fileName);
-    Task writerTask = writer.WriteAsync(data);
-    await writerTask;
-    writer.Close();
+    using (StreamWriter writer = new StreamWriter(fileName)) { 
+      await writer.WriteAsync(data);
+    }
   }
 }
 
@@ -16,11 +15,10 @@ class FileReader
 {
   public async Task<string> ReadFile(string fileName)
   {
-    StreamReader reader = new StreamReader(fileName);
-    Task<string> readerTask = reader.ReadToEndAsync();
-    reader.Close();
-
-    return await readerTask;
+    using (StreamReader reader = new StreamReader(fileName)) { 
+      string content = await reader.ReadToEndAsync();
+      return content;
+    }
   }
 }
 
@@ -34,18 +32,15 @@ class Program
     FileReader fileReader = new FileReader();
 
     //Write data to a file asynchronously
-    Task writerTask = fileWriter.WriteFile(fileName, "India is the most populous country by 2023");
-    //writerTask.Wait(); //Block until the write operation is completed
-    await writerTask;
+    await fileWriter.WriteFile(fileName, "India is the most populous country by 2023");//Block the current task
+                                                                                       //(but without blocking the current thread) 
     Console.WriteLine("File written.");
 
     //Read data from the file asynchronously
-    Task<string> readerTask = fileReader.ReadFile(fileName);
-    //readerTask.Wait(); //Block the current thread until the read operation is completed.
-    await readerTask;
+    string content = await fileReader.ReadFile(fileName);//Block the current task
+                                                         //(but without blocking the current thread) 
     Console.WriteLine("File read.");
-
-    Console.WriteLine($"\nFile content: {readerTask.Result}");
+    Console.WriteLine($"\nFile content: {content}");
 
     Console.ReadKey();
   }
