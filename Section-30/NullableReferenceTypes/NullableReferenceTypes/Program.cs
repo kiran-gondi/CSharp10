@@ -7,10 +7,10 @@
 
   public AddressDetails? PersonAddressDetails { get; set; }
 
-    public Employee()
+    public Employee(string firstName, string lastName)
     {
-      FirstName = "test1";
-      LastName = "test2";
+      FirstName = firstName;
+      LastName = lastName;
     }
 }
 
@@ -24,10 +24,25 @@ class EmployeeBusinessLogic
 {
   public Employee? GetEmployee()
   {
-    return new Employee() { x = 10 };
+    //return new Employee() { x = 10 };
     //return null;
+    //return new("rob", "doe"); //Target-typed 'new' expression feature in C# 9
+    Employee e = new("rob", "mon");
+    return e;
   }
 }
+
+class DataPrinter
+{
+  public static void PrintEmployee(Employee e)
+  {
+    if (e != null)
+    {
+      Console.WriteLine($"{e.FirstName} {e.LastName}");
+    }
+  }
+}
+
 //Emloyee = non-nullable (null values are not expected)
 //Emloyee? = nullable (accept null values)
 class Program
@@ -50,6 +65,15 @@ class Program
       Console.WriteLine(employee!.PersonAddressDetails?.City);
       Console.WriteLine(employee!.PersonAddressDetails?.ZipCode);
     }
+
+    //Target-typed new expression
+    DataPrinter.PrintEmployee(new("one", "two"));//Employee class name wil be taken automatically here, based
+    //on the definition of hte PrintEmplyee method
+
+    //using (var f = new("", FileMode.Create, FileAccess.Read))
+    //{
+
+    //}
 
     Console.ReadKey();
   }
