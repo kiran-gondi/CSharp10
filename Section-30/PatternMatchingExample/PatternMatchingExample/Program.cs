@@ -90,19 +90,31 @@ class Descriptor
   #region C# 9 Pattern Matching - When Pattern
   public static string GetDescriptionWithWhen(Person person)
   {
-    switch (person)
+    //Pattern Matching - When Pattern
+    //switch (person)
+    //{
+    //  case Person p when p.Age < 20 && p.Age > 13: //Type Pattern, Variable Pattern and When Pattern
+    //    return $"{p.Name} is a Teenager";
+    //  case Person p when p.Age < 13:
+    //    return $"{p.Name} is Child";
+    //  case Person p when p.Age >= 20 && p.Age < 60:
+    //    return $"{p.Name} is Adult";
+    //  case Person p when p.Age > 60:
+    //    return $"{p.Name} is Senior Citizen";
+    //  default:
+    //    return $"{person.Name} is a person";
+    //}
+
+    //Pattern Matching - Switch Expression Pattern
+    string result = person switch
     {
-      case Person p when p.Age < 20 && p.Age > 13: //Type Pattern, Variable Pattern and When Pattern
-        return $"{p.Name} is a Teenager";
-      case Person p when p.Age < 13:
-        return $"{p.Name} is Child";
-      case Person p when p.Age >= 20 && p.Age < 60:
-        return $"{p.Name} is Adult";
-      case Person p when p.Age > 60:
-        return $"{p.Name} is Senior Citizen";
-      default:
-        return $"{person.Name} is a person";
-    }
+      Person p when p.Age < 20 && p.Age > 13 => $"{p.Name} is a Teenager",
+      Person p when p.Age < 13 => $"{p.Name} is Child",
+      Person p when p.Age >= 20 && p.Age < 60 => $"{p.Name} is Adult",
+      Person p when p.Age > 60 => $"{p.Name} is Senior Citizen",
+      _ => $"{person.Name} is a person"
+    };
+    return result;
 
   }
   #endregion
@@ -115,10 +127,8 @@ class Descriptor
       Console.WriteLine(Descriptor.GetDescription(manager));
 
       Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 30, CustomerBalance = 1000 };
-      Console.WriteLine(Descriptor.GetDescription(customer));
+      //Console.WriteLine(Descriptor.GetDescription(customer));
       Console.WriteLine(Descriptor.GetDescriptionWithWhen(customer));
-
-
 
       Console.ReadKey();
     }
