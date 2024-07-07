@@ -1,4 +1,6 @@
-﻿class Person
+﻿using System.Diagnostics;
+
+class Person
 {
     public string? Name { get; set; }
     public int? Age { get; set; }
@@ -77,24 +79,48 @@ class Descriptor
         return $"{person.Name}, {person.Age}, {person.Gender}, {cust.CustomerBalance}";
       case Supplier sup:
         return $"{person.Name}, {person.Age}, {person.Gender}, {sup.SupplierBalance}";
-        //break;
+      //break;
       default:
         return $"{person.Name}, {person.Age}, {person.Gender}";
     }
-  #endregion
-}
-}
+    #endregion
+  }
 
-class Program
-{
-  static void Main()
+
+  #region C# 9 Pattern Matching - When Pattern
+  public static string GetDescriptionWithWhen(Person person)
   {
-    Manager manager = new Manager() { Name="John", Gender="Male", Age=20, Salary = 3000 };
-    Console.WriteLine(Descriptor.GetDescription(manager));
+    switch (person)
+    {
+      case Person p when p.Age < 20 && p.Age > 13: //Type Pattern, Variable Pattern and When Pattern
+        return $"{p.Name} is a Teenager";
+      case Person p when p.Age < 13:
+        return $"{p.Name} is Child";
+      case Person p when p.Age >= 20 && p.Age < 60:
+        return $"{p.Name} is Adult";
+      case Person p when p.Age > 60:
+        return $"{p.Name} is Senior Citizen";
+      default:
+        return $"{person.Name} is a person";
+    }
 
-    Customer customer = new Customer() { Name="Smith", Gender="Male", Age=30, CustomerBalance=1000};
-    Console.WriteLine(Descriptor.GetDescription(customer));
+  }
+  #endregion
 
-    Console.ReadKey();
+  class Program
+  {
+    static void Main()
+    {
+      Manager manager = new Manager() { Name = "John", Gender = "Male", Age = 20, Salary = 3000 };
+      Console.WriteLine(Descriptor.GetDescription(manager));
+
+      Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 30, CustomerBalance = 1000 };
+      Console.WriteLine(Descriptor.GetDescription(customer));
+      Console.WriteLine(Descriptor.GetDescriptionWithWhen(customer));
+
+
+
+      Console.ReadKey();
+    }
   }
 }
