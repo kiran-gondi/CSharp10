@@ -52,7 +52,7 @@ class Descriptor
 
 
     #region C# 9 Pattern Matching - Type Pattern
-    if (person is Employee emp) //C# 9 Pattern Matching - Type Pattern
+    /*if (person is Employee emp) //C# 9 Pattern Matching - Type Pattern
     {
       return $"{person.Name}, {person.Age}, {person.Gender}, {emp.Salary}";
     }
@@ -65,10 +65,24 @@ class Descriptor
       return $"{person.Name}, {person.Age}, {person.Gender}, {sup.SupplierBalance}";
     }
     else
-      return $"{person.Name}, {person.Age}, {person.Gender}"; 
+      return $"{person.Name}, {person.Age}, {person.Gender}"; */
     #endregion
 
-  }
+    #region C# 9 Pattern Matching - Switch-Case Pattern
+    switch (person)
+    {
+      case Employee emp:
+        return $"{person.Name}, {person.Age}, {person.Gender}, {emp.Salary}";
+      case Customer cust:
+        return $"{person.Name}, {person.Age}, {person.Gender}, {cust.CustomerBalance}";
+      case Supplier sup:
+        return $"{person.Name}, {person.Age}, {person.Gender}, {sup.SupplierBalance}";
+        //break;
+      default:
+        return $"{person.Name}, {person.Age}, {person.Gender}";
+    }
+  #endregion
+}
 }
 
 class Program
