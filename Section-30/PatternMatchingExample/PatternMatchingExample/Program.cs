@@ -1,10 +1,15 @@
 ﻿using System.Diagnostics;
 
+enum MaritalStatus
+{
+  Unmarried, Married
+}
 class Person
 {
     public string? Name { get; set; }
     public int? Age { get; set; }
     public string? Gender { get; set; }
+    public MaritalStatus PersonMaritalStatus { get; set; }
 }
 
 class Employee: Person
@@ -117,13 +122,25 @@ class Descriptor
     //return result;
 
     //Pattern Matching - Relational & Logical Pattern
+    //string result = person switch
+    //{
+    //  Person p when p.Age is <= 20 and >= 13 => $"{p.Name} is a Teenager", //p.Age <= 20 and p.Age >= 13
+    //  Person p when p.Age is < 13 => $"{p.Name} is Child", //p.Age < 13
+    //  Person p when p.Age is >= 20 and < 60 => $"{p.Name} is Adult", //p.Age >= 20 and p.Age < 60
+    //  Person p when p.Age is >= 60 and not (100 or 200)  => $"{p.Name} is Senior Citizen", //p.Age > 60
+    //  Person p when p.Age is 100 or 200 => $"{p.Name} is centenarian", //p.Age == 100 || p.Age == 200
+    //  _ => $"{person.Name} is a person"
+    //};
+    //return result;
+
+    //Pattern Matching - Property Pattern
     string result = person switch
     {
-      Person p when p.Age is <= 20 and >= 13 => $"{p.Name} is a Teenager", //p.Age <= 20 and p.Age >= 13
-      Person p when p.Age is < 13 => $"{p.Name} is Child", //p.Age < 13
-      Person p when p.Age is >= 20 and < 60 => $"{p.Name} is Adult", //p.Age >= 20 and p.Age < 60
-      Person p when p.Age is >= 60 and not (100 or 200)  => $"{p.Name} is Senior Citizen", //p.Age > 60
-      Person p when p.Age is 100 or 200 => $"{p.Name} is centenarian", //p.Age == 100 || p.Age == 200
+      Person {Age:<=20 and >=13 } p => $"{p.Name} is a Teenager", //p.Age <= 20 and p.Age >= 13
+      Person {Age:<13 } p => $"{p.Name} is Child", //p.Age < 13
+      Person {Age:>=20 and <60} p => $"{p.Name} is Adult", //p.Age >= 20 and p.Age < 60
+      Person {Age:>=60 and not (100 or 200) } p => $"{p.Name} is Senior Citizen", //p.Age > 60
+      Person {Age:100 or 200} p => $"{p.Name} is centenarian", //p.Age == 100 || p.Age == 200
       _ => $"{person.Name} is a person"
     };
     return result;
@@ -131,16 +148,34 @@ class Descriptor
   }
   #endregion
 
+  public static string GetDescriptionWithMultipleProperitesPattern(Person person)
+  {
+    //Master, Mr, Miss, Ms, Mx
+    return person switch
+    {
+      Person { Gender: "Female", PersonMaritalStatus: MaritalStatus.Unmarried } => $"Miss.{person.Name}",
+      Person { Gender: "Female", PersonMaritalStatus: MaritalStatus.Married } => $"Mrs.{person.Name}",
+      Person { Gender: "Male", Age: < 18 } => $"Master.{person.Name}",
+      Person { Gender: "Male", Age: >= 18 } => $"Mr.{person.Name}",
+      Person { Gender: not ("Male" or "Female") } => $"Mx.{person.Name}",
+      _ => $"{person.Name}"
+    };
+  }
+
   class Program
   {
     static void Main()
     {
-      Manager manager = new Manager() { Name = "John", Gender = "Male", Age = 20, Salary = 3000 };
-      Console.WriteLine(Descriptor.GetDescription(manager));
+      Manager manager = new Manager() { Name = "John", Gender = "Male", Age = 20, Salary = 3000, PersonMaritalStatus = MaritalStatus.Married };
+      //Console.WriteLine(Descriptor.GetDescription(manager));
 
-      Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 200, CustomerBalance = 1000 };
+      Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 12, 
+        CustomerBalance = 1000, PersonMaritalStatus = MaritalStatus.Unmarried };
       //Console.WriteLine(Descriptor.GetDescription(customer));
-      Console.WriteLine(Descriptor.GetDescriptionWithWhen(customer));
+      //Console.WriteLine(Descriptor.GetDescriptionWithWhen(customer));
+      
+      Console.WriteLine(Descriptor.GetDescriptionWithMultipleProperitesPattern(manager));
+      Console.WriteLine(Descriptor.GetDescriptionWithMultipleProperitesPattern(customer));
 
       Console.ReadKey();
     }
