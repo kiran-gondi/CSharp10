@@ -106,12 +106,24 @@ class Descriptor
     //}
 
     //Pattern Matching - Switch Expression Pattern
+    //string result = person switch
+    //{
+    //  Person p when p.Age < 20 && p.Age > 13 => $"{p.Name} is a Teenager",
+    //  Person p when p.Age < 13 => $"{p.Name} is Child",
+    //  Person p when p.Age >= 20 && p.Age < 60 => $"{p.Name} is Adult",
+    //  Person p when p.Age > 60 => $"{p.Name} is Senior Citizen",
+    //  _ => $"{person.Name} is a person"
+    //};
+    //return result;
+
+    //Pattern Matching - Relational & Logical Pattern
     string result = person switch
     {
-      Person p when p.Age < 20 && p.Age > 13 => $"{p.Name} is a Teenager",
-      Person p when p.Age < 13 => $"{p.Name} is Child",
-      Person p when p.Age >= 20 && p.Age < 60 => $"{p.Name} is Adult",
-      Person p when p.Age > 60 => $"{p.Name} is Senior Citizen",
+      Person p when p.Age is <= 20 and >= 13 => $"{p.Name} is a Teenager", //p.Age <= 20 and p.Age >= 13
+      Person p when p.Age is < 13 => $"{p.Name} is Child", //p.Age < 13
+      Person p when p.Age is >= 20 and < 60 => $"{p.Name} is Adult", //p.Age >= 20 and p.Age < 60
+      Person p when p.Age is >= 60 and not (100 or 200)  => $"{p.Name} is Senior Citizen", //p.Age > 60
+      Person p when p.Age is 100 or 200 => $"{p.Name} is centenarian", //p.Age == 100 || p.Age == 200
       _ => $"{person.Name} is a person"
     };
     return result;
@@ -126,7 +138,7 @@ class Descriptor
       Manager manager = new Manager() { Name = "John", Gender = "Male", Age = 20, Salary = 3000 };
       Console.WriteLine(Descriptor.GetDescription(manager));
 
-      Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 30, CustomerBalance = 1000 };
+      Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 200, CustomerBalance = 1000 };
       //Console.WriteLine(Descriptor.GetDescription(customer));
       Console.WriteLine(Descriptor.GetDescriptionWithWhen(customer));
 
