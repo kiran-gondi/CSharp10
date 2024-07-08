@@ -12,7 +12,7 @@ class Person
     public MaritalStatus PersonMaritalStatus { get; set; }
 
     //Pattern Matching - Positional Pattern
-    public void Deconstruct(out Person person, out string? gender, out int? age, out MaritalStatus maritalStatus)
+    /*public void Deconstruct(out Person person, out string? gender, out int? age, out MaritalStatus maritalStatus)
     {
     //OLD WAY
     //person = this;
@@ -22,7 +22,14 @@ class Person
 
     //ANOTHER WAY
     (person, gender, age, maritalStatus) = (this, this.Gender, this.Age, this.PersonMaritalStatus);
-    }
+    }*/
+
+    public BirthDateInfo? BirthDate { get; set; }
+}
+
+class BirthDateInfo
+{
+  public DateTime DateOfBirth { get; set; }
 }
 
 class Employee: Person
@@ -188,13 +195,32 @@ class Descriptor
 
     //Pattern Matching - Positional Pattern
     //(person, person.Gender, person.Age, person.PersonMaritalStatus)
+    //return person switch //Tuple
+    //{
+    //  (Person, "Female", _, MaritalStatus.Unmarried) p => $"Miss.{p.Name}", //We can have alias as "p" also
+    //  (Person, "Female", _, MaritalStatus.Married) p => $"Mrs.{p.Name}",
+    //  (Person, "Male", < 18, _) p=> $"Master.{p.Name}",
+    //  (Person, "Male", >= 18, _) p=> $"Mr.{p.Name}",
+    //  (Person, not ("Male" or "Female"), _, _) p=> $"Mx.{p.Name}",
+    //  _ => $"{person.Name}"
+    //};
+
+    //Pattern Matching -Extended(Nested) Property Pattern
     return person switch //Tuple
     {
-      (Person, "Female", _, MaritalStatus.Unmarried) p => $"Miss.{p.Name}", //We can have alias as "p" also
-      (Person, "Female", _, MaritalStatus.Married) p => $"Mrs.{p.Name}",
-      (Person, "Male", < 18, _) p=> $"Master.{p.Name}",
-      (Person, "Male", >= 18, _) p=> $"Mr.{p.Name}",
-      (Person, not ("Male" or "Female"), _, _) p=> $"Mx.{p.Name}",
+      //Person {Gender: "Female", _, PersonMaritalStatus:MaritalStatus.Unmarried, 
+      //  BirthDate:{DateOfBirth: { Year:>2000 } } } p => $"Miss.{p.Name}", //We can have alias as "p" also
+      Person
+      {
+        Gender: "Female", PersonMaritalStatus: MaritalStatus.Unmarried,
+        BirthDate.DateOfBirth: { Year: > 2000 } 
+      } p => $"Miss.{p.Name}",
+      //x.y.z
+
+      Person{Gender:"Female", PersonMaritalStatus: MaritalStatus.Married } p => $"Mrs.{p.Name}",
+      Person{Gender:"Male", Age:< 18 }  p => $"Master.{p.Name}",
+      Person{Gender:"Male", Age:>= 18 }  p => $"Mr.{p.Name}",
+      Person{Gender:not ("Male" or "Female") } p => $"Mx.{p.Name}",
       _ => $"{person.Name}"
     };
   }
@@ -203,7 +229,15 @@ class Descriptor
   {
     static void Main()
     {
-      Manager manager = new Manager() { Name = "John", Gender = "Male", Age = 20, Salary = 3000, PersonMaritalStatus = MaritalStatus.Married };
+      Manager manager = new Manager()
+      {
+        Name = "John",
+        Gender = "Male",
+        Age = 20,
+        Salary = 3000,
+        PersonMaritalStatus = MaritalStatus.Married,
+        BirthDate = new BirthDateInfo() { DateOfBirth = DateTime.Parse("2002-01-01") }
+      };
       //Console.WriteLine(Descriptor.GetDescription(manager));
 
       Customer customer = new Customer() { Name = "Smith", Gender = "Male", Age = 12, 
