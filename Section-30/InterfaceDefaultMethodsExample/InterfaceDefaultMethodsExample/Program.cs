@@ -4,6 +4,12 @@
   {
       public string Name { get; set; }
 
+    //static method
+    internal static string GetNameTitleWithStatic()
+    {
+      return "Mr./Ms.";
+    }
+
     //private default interface methods
 
     private string GetNameTitle()
@@ -18,7 +24,8 @@
     //}
     internal string GetNameInUpperCase()
     {
-      return GetNameTitle() + "" + Name.ToUpper();
+      //return GetNameTitle() + "" + Name.ToUpper();
+      return IEmployee.GetNameTitleWithStatic() + "" + Name.ToUpper();
     }
 
     internal string GetNameInLowerCase();
@@ -55,10 +62,11 @@
       Manager m = new Manager() { Name = "Bob" };
       //IEmployee m = new Manager() { Name = "Bob" };
       IEmployee iemp = (IEmployee)m;
-      Console.WriteLine(iemp.GetNameInUpperCase());
-      Console.WriteLine(iemp.GetNameInLowerCase());
-      Console.WriteLine(iemp.GetNameLength());
+      //Console.WriteLine(iemp.GetNameInUpperCase());
+      //Console.WriteLine(iemp.GetNameInLowerCase());
+      //Console.WriteLine(iemp.GetNameLength());
       //Console.WriteLine(m.GetNameLength());
+      Console.WriteLine(IEmployee.GetNameTitleWithStatic());
       Console.ReadKey();
     }
   }
