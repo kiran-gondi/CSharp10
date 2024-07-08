@@ -20,8 +20,25 @@
 
     //public properties
     //public int AccountNumber { get { return _accountNumber; } }
-    public int AccountNumber { get => _accountNumber; } 
-    public double CurrentBalance { get => _currentBalance; } 
+    public int AccountNumber { get => _accountNumber;
+    //Init-Only Properties
+    init => _accountNumber = value; } 
+    public double CurrentBalance { get => _currentBalance;
+    //Init-Only Properties
+      init 
+      {
+        if (value >= 0)
+        {
+          _currentBalance = value;
+        }
+      } 
+  }
+
+    //paramter-less constructor
+    public BankAccount()
+    {
+        
+    }
 }
 
 class DataStorage
@@ -35,7 +52,7 @@ class DataStorage
     //};
 
     return new List<BankAccount> { 
-    new BankAccount(1, 1000),
+    new BankAccount(){ AccountNumber = 1, CurrentBalance = 1000 },
     new BankAccount(2, 2000)
     };
   }
@@ -43,7 +60,7 @@ class DataStorage
   //developer2
   public static double GetCurrentBalance(BankAccount bankAccount)
   {
-    //bankAccount.AccountNumber = 100;  Not accessible as its read-only
+    //bankAccount.AccountNumber = 100;  //Not accessible as its read-only
     return bankAccount.CurrentBalance;
   }
 }
