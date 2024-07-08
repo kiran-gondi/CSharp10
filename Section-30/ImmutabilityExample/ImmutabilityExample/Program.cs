@@ -30,7 +30,7 @@ class Program
     List<BankAccount> bankAccounts = DataStorage.GetBankAccounts();
     BankAccount firstBankAccount = bankAccounts[0];
     double firstBankAccountBalance = DataStorage.GetCurrentBalance(firstBankAccount);
-    Console.WriteLine(firstBankAccountBalance);
+    Console.WriteLine(firstBankAccount.AccountNumber + "," + firstBankAccountBalance);
 
     Console.ReadKey();
   }
