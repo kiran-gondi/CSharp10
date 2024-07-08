@@ -1,4 +1,5 @@
-﻿class BankAccount
+﻿//class BankAccount
+readonly struct BankAccount //Readonly Structs
 {
   //public int AccountNumber { get; set; }
   //public double CurrentBalance { get; set; }
@@ -35,10 +36,10 @@
   }
 
     //paramter-less constructor
-    public BankAccount()
-    {
+    //public BankAccount()
+    //{
         
-    }
+    //}
 }
 
 class DataStorage
