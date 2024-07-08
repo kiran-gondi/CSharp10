@@ -1,15 +1,21 @@
-﻿//C# 9 Records
-public record Person(string Name, int Age);
-
-class Program
+﻿namespace records_example
 {
-  static void Main()
+  //C# 9 Records
+  public record Person(string Name, int Age, Address PersonAddress);
+
+  //Nested Records
+  public record Address(string city);
+
+  class Program
   {
-    Person p1 = new Person("Bill1", 22);
-    Person p2 = new("Bill2", 32);
-    Console.WriteLine($"{p1.Name}, {p1.Age}");
-    Console.WriteLine($"{p2.Name}, {p2.Age}");
-    //p1.Name = "jack"; //Error: Init-only property can only be assigned in a constructor or object initializer.
-    Console.ReadKey();
+    static void Main()
+    {
+      Person p1 = new Person("Bill1", 22, new Address("London"));
+      Person p2 = new("Bill2", 32, new Address("Delhi"));
+      Console.WriteLine($"{p1.Name}, {p1.Age}, {p1.PersonAddress.city}");
+      Console.WriteLine($"{p2.Name}, {p2.Age}, {p2.PersonAddress.city}");
+      //p1.Name = "jack"; //Error: Init-only property can only be assigned in a constructor or object initializer.
+      Console.ReadKey();
+    }
   }
 }
