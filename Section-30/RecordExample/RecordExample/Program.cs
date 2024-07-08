@@ -36,14 +36,29 @@ namespace records_example
   }
 
   //Records - Inheritance
-  public record Employee(string? Name, DateTime? DateOfBirth, double? Salary) 
-    : Person(Name, DateOfBirth);
+  public sealed record Employee(string? Name, DateTime? DateOfBirth, double? Salary) 
+    : Person(Name, DateOfBirth)
+  {
+    public sealed override string ToString()
+    {
+      return $"Salary is {Salary}, {base.ToString()}";
+    }
+  }
+  //Record - sealed ToString()
+  //public record Manager: Employee(null, null, null)
+  //{
+  //  public override string ToString()//Error: cannot override inherited member ToString(),
+                                       //  beacuse it is sealed.
+  //  {
+  //    return "somevalue";
+  //  }
+  //}
 
   #region Records - Construtor
   //Records - Construtor
   
-  //public abstract record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
-  public sealed record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
+  public abstract record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
+  //public sealed record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
   {
     //User ==> user-defined constructor --> compiler-generated constructor
     public Person(string? name, DateTime? dateOfBirth) : this(name, dateOfBirth, null)
@@ -63,6 +78,11 @@ namespace records_example
     public string GetName()
     {
       return $"Mr./Ms.{Name}";
+    }
+
+    public override string ToString()
+    {
+      return $"Name is {Name}";
     }
   }
   #endregion
@@ -123,6 +143,9 @@ namespace records_example
 
       //Absract/Sealed 
       //Person p1 = new Person(); 
+
+      Employee emp = new Employee("Scott", DateTime.Parse("1995-04-06"), 6000);
+      Console.WriteLine(emp);
 
       Console.ReadKey();
     }
