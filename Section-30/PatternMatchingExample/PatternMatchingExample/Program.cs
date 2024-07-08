@@ -10,6 +10,19 @@ class Person
     public int? Age { get; set; }
     public string? Gender { get; set; }
     public MaritalStatus PersonMaritalStatus { get; set; }
+
+    //Pattern Matching - Positional Pattern
+    public void Deconstruct(out Person person, out string? gender, out int? age, out MaritalStatus maritalStatus)
+    {
+    //OLD WAY
+    //person = this;
+    //gender = this.Gender;
+    //age = this.Age;
+    //maritalStatus = this.PersonMaritalStatus;
+
+    //ANOTHER WAY
+    (person, gender, age, maritalStatus) = (this, this.Gender, this.Age, this.PersonMaritalStatus);
+    }
 }
 
 class Employee: Person
@@ -163,13 +176,25 @@ class Descriptor
     //};
 
     //Pattern Matching - Tuple Pattern
-    return (person, person.Gender, person.Age, person.PersonMaritalStatus) switch //Tuple
+    //return (person, person.Gender, person.Age, person.PersonMaritalStatus) switch //Tuple
+    //{
+    //  (Person, "Female",_, MaritalStatus.Unmarried) => $"Miss.{person.Name}",
+    //  (Person, "Female",_, MaritalStatus.Married) => $"Mrs.{person.Name}",
+    //  (Person, "Male", <18,_) => $"Master.{person.Name}",
+    //  (Person, "Male", >=18,_) => $"Mr.{person.Name}",
+    //  (Person, not ("Male" or "Female"),_,_) => $"Mx.{person.Name}",
+    //  _ => $"{person.Name}"
+    //};
+
+    //Pattern Matching - Positional Pattern
+    //(person, person.Gender, person.Age, person.PersonMaritalStatus)
+    return person switch //Tuple
     {
-      (Person, "Female",_, MaritalStatus.Unmarried) => $"Miss.{person.Name}",
-      (Person, "Female",_, MaritalStatus.Married) => $"Mrs.{person.Name}",
-      (Person, "Male", <18,_) => $"Master.{person.Name}",
-      (Person, "Male", >=18,_) => $"Mr.{person.Name}",
-      (Person, not ("Male" or "Female"),_,_) => $"Mx.{person.Name}",
+      (Person, "Female", _, MaritalStatus.Unmarried) p => $"Miss.{p.Name}", //We can have alias as "p" also
+      (Person, "Female", _, MaritalStatus.Married) p => $"Mrs.{p.Name}",
+      (Person, "Male", < 18, _) p=> $"Master.{p.Name}",
+      (Person, "Male", >= 18, _) p=> $"Mr.{p.Name}",
+      (Person, not ("Male" or "Female"), _, _) p=> $"Mx.{p.Name}",
       _ => $"{person.Name}"
     };
   }
