@@ -36,10 +36,11 @@ readonly struct BankAccount //Readonly Structs
   }
 
     //paramter-less constructor
-    //public BankAccount()
-    //{
-        
-    //}
+    public BankAccount()
+    {
+      _accountNumber = 0;
+      _currentBalance = 0;
+    }
 }
 
 class DataStorage
@@ -53,7 +54,8 @@ class DataStorage
     //};
 
     return new List<BankAccount> { 
-    new BankAccount(){ AccountNumber = 1, CurrentBalance = 1000 },
+    //new BankAccount(), //Parameterless Constructor
+    new BankAccount() { AccountNumber = 1, CurrentBalance = 1000 },
     new BankAccount(2, 2000)
     };
   }
