@@ -4,6 +4,13 @@
   {
       public string Name { get; set; }
 
+    //private default interface methods
+
+    private string GetNameTitle()
+    {
+      return "Mr./Ms.";
+    }
+
     //default interface methods OR virtual extension method
     //public string GetNameInUpperCase()
     //{
@@ -11,7 +18,7 @@
     //}
     internal string GetNameInUpperCase()
     {
-      return Name.ToUpper();
+      return GetNameTitle() + "" + Name.ToUpper();
     }
 
     internal string GetNameInLowerCase();
