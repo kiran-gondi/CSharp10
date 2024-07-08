@@ -21,19 +21,29 @@ namespace records_example
 
   //Records - ToString()
   #region Records - ToString()
-  public record Address(string City, string Country)
-  {
-    public override string ToString()
-    {
-      return $"City is {City} in {Country}";
-    }
-  }
+  //public record Address(string City, string Country)
+  //{
+  //  public override string ToString()
+  //  {
+  //    return $"City is {City} in {Country}";
+  //  }
+  //}
   #endregion
+
+  class PersonBase
+  {
+
+  }
+
+  //Records - Inheritance
+  public record Employee(string? Name, DateTime? DateOfBirth, double? Salary) 
+    : Person(Name, DateOfBirth);
 
   #region Records - Construtor
   //Records - Construtor
   
-  public record Person(string? Name, DateTime? DateOfBirth, int? Age)
+  //public abstract record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
+  public sealed record Person(string? Name, DateTime? DateOfBirth, int? Age): IPerson //: PersonBase
   {
     //User ==> user-defined constructor --> compiler-generated constructor
     public Person(string? name, DateTime? dateOfBirth) : this(name, dateOfBirth, null)
@@ -56,6 +66,16 @@ namespace records_example
     }
   }
   #endregion
+
+  //class Manager: Employee
+  //{
+
+  //}
+
+  public interface IPerson
+  {
+    string? Name { get; init; }
+  }
 
   class Program
   {
@@ -94,9 +114,15 @@ namespace records_example
       //Console.WriteLine(p1.ToString());
 
       //Records - Constructor
-      Person p1 = new Person("Scott", DateTime.Parse("2001-06-04"));
-      Console.WriteLine(p1);
-      Console.WriteLine(p1.GetName());
+      //Person p1 = new Person("Scott", DateTime.Parse("2001-06-04"));
+      //Console.WriteLine(p1);
+      //Console.WriteLine(p1.GetName());
+
+      //Employee emp = new Employee("Scott", DateTime.Parse("1995-04-06"), 22, 6000);
+      //Console.WriteLine(emp);
+
+      //Absract/Sealed 
+      //Person p1 = new Person(); 
 
       Console.ReadKey();
     }
